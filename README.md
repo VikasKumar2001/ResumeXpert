@@ -46,7 +46,9 @@ HTML5 & CSS3 – Frontend UI
 (Optional) spaCy/pyresparser – For advanced NLP-based parsing
 
 💻 Demo Screenshot
-<!-- Replace with your screenshot or GIF -->
+
+<img width="806" height="942" alt="image" src="https://github.com/user-attachments/assets/10e51a65-782a-4aad-8288-72ca515266dd" />
+
 
 🖥️ How to Run
 1. Clone the Repository
