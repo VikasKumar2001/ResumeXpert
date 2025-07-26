@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Resume Screening AI</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #f4f4f4;
+      color: #333;
+    }
+
+    .container {
+      max-width: 600px;
+      margin: 20px auto;
+      padding: 20px;
+      background-color: #fff;
+      border-radius: 8px;
+      box-shadow: 0 2px 5px rgba(0, 0, 0, 0.7);
+    }
+
+    h1, h2 {
+      text-align: center;
+      margin-bottom: 20px;
+    }
+
+    form {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+
+    input[type="file"] {
+      margin-bottom: 20px;
+      padding: 10px;
+
+      color: #fff;
+      border: none;
+      border-radius: 4px;
+      cursor: pointer;
+      transition: background-color 0.3s;
+    }
+
+    input[type="submit"] {
+      padding: 10px 20px;
+      background-color: #4CAF50;
+      color: #fff;
+      border: none;
+      border-radius: 4px;
+      cursor: pointer;
+      transition: background-color 0.3s;
+    }
+
+    input[type="submit"]:hover {
+      background-color: #45a049;
+    }
+
+    .header {
+      background: #013a5c;
+      color: white;
+      margin-top: 20px;
+    }
+  </style>
+</head>
+<body>
+
+<div class="container header">
+  <h1>Resume Screening AI-Based System</h1>
+  <p>This system supports TXT and PDF files</p>
+  <ul>
+    <li>Resume Categorization</li>
+    <li>Resume Job Recommendation</li>
+    <li>Resume Parsing</li>
+  </ul>
+</div>
+
+<div class="container header">
+  <h2>Upload Your Resume</h2>
+  <form action="/pred" method="post" enctype="multipart/form-data">
+    <input type="file" name="resume" accept=".pdf, .txt" required>
+    <input type="submit" value="Submit">
+  </form>
+
+  {% if message %}
+  <p class="text-center">{{ message }}</p>
+{% endif %}
+
+{% if predicted_category %}
+  <br><br><br>
+  <p><b>Category:</b> {{ predicted_category }}</p>
+  <p><b>Job Role:</b> {{ predicted_job_recommendation }}</p>
+  <br>
+  <hr>
+  <h1 class="text-center">Extracted Information</h1>
+  <p class="text-center"><b>Name:</b> {{ name_simple }}</p>
+  <p class="text-center"><b>Phone:</b> {{ phone }}</p>
+  <p class="text-center"><b>Email:</b> {{ email }}</p>
+
+  {% if extracted_skills %}
+    <p class="text-center"><b>Skills:</b></p>
+    <ul>
+      {% for skill in extracted_skills %}
+        <li>{{ skill }}</li>
+      {% endfor %}
+    </ul>
+  {% else %}
+    <p class="text-center">No skills found.</p>
+  {% endif %}
+{% endif %}
+
+</div>
+
+</body>
+</html>
